@@ -73,14 +73,14 @@ function setup() {
 
 
 function toggleRandomize() {
-    randomizeToggle = randomizeCheckbox.checked(); // Get the checkbox state
+    randomizeToggle = randomizeCheckbox.checked();
   }
 
 function saveTransparentPNG(filename) {
   let gfx = createGraphics(width, height);
-  gfx.pixelDensity(1); // optional: keep same scaling
+  gfx.pixelDensity(1);
 
-  gfx.clear(); // ensures full transparency
+  gfx.clear();
 
   for (let i = 0; i < letterParts.length; i++) {
     let x = randomizeToggle ? random(0, width - colwidth) : letterParts[i].x;
@@ -206,21 +206,19 @@ function startEffect() {
     if (input) {
       let formatted = '';
       let currentLine = '';
-      let maxLineLength = 8; // Set the maximum line length to 8 characters
-      let words = input.split(' '); // Split the input by spaces
+      let maxLineLength = 8; 
+      let words = input.split(' '); 
       
       for (let i = 0; i < words.length; i++) {
-        // Check if adding the next word exceeds the maximum line length
         if ((currentLine + words[i]).length <= maxLineLength) {
-          currentLine += words[i] + ' '; // Add the word to the current line
+          currentLine += words[i] + ' '; 
         } else {
-          formatted += currentLine.trim() + '\n'; // Start a new line
-          currentLine = words[i] + ' '; // Start the new line with the current word
+          formatted += currentLine.trim() + '\n'; 
+          currentLine = words[i] + ' '; 
         }
       }
       formatted += currentLine.trim();
       
-      // Now `formatted` contains the input split by spaces with no word exceeding 8 characters
       str = formatted.trim();
       updateTextParts();
     }
